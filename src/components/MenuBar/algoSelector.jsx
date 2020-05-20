@@ -6,8 +6,8 @@ import { useDispatch } from 'react-redux'
 const AlgoSelector = () => {
   const dispatch = useDispatch()
 
-  const handleSelect = algo => {
-    dispatch({ type: UPDATE_ALGORITHM, payload: algo })
+  const handleSelect = event => {
+    dispatch({ type: UPDATE_ALGORITHM, payload: event.target.value })
   }
 
   return (

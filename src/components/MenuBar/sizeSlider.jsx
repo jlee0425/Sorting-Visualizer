@@ -21,10 +21,10 @@ const SizeSlider = () => {
         onChange={handleSlide}
         aria-labelledby='discrete-slider'
         valueLabelDisplay='auto'
-        step={10}
+        step={2}
         marks
-        min={10}
-        max={100}
+        min={8}
+        max={20}
       />
     </React.Fragment>
   )

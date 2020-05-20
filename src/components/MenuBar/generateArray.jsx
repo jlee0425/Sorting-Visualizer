@@ -1,10 +1,15 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
+import { uuid } from 'uuidv4'
 import { UPDATE_ARRAY } from '../../redux/actionTypes'
 
 export const generateRandomArray = size => {
+  const MAX_HEIGHT = 600
   return [...Array(size)].map(() => {
-    return Math.floor(Math.random() * size * 18 + 20)
+    return {
+      height: Math.floor(Math.random() * MAX_HEIGHT + 20),
+      key: uuid()
+    }
   })
 }
 const NewArrayButton = () => {

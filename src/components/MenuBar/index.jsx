@@ -6,9 +6,6 @@ import StartButton from './startButton'
 import './index.scss'
 
 const Toolbar = () => {
-  const [anchorEl, setAnchorEl] = React.useState(null)
-  const [algorithm, setAlgorithm] = useState(null)
-
   return (
     <div className='toolbar'>
       <NewArrayButton className='newBtn' />
