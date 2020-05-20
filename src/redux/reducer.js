@@ -1,4 +1,9 @@
-import { UPDATE_ALGORITHM, UPDATE_ARRAY, START_SORTING } from './actionTypes'
+import {
+  UPDATE_ALGORITHM,
+  UPDATE_ARRAY,
+  START_SORTING,
+  FINISH_SORTING
+} from './actionTypes'
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -16,6 +21,11 @@ const reducer = (state, action) => {
       return {
         ...state,
         isSorting: true
+      }
+    case FINISH_SORTING:
+      return {
+        ...state,
+        isSorting: false
       }
     default:
       return state
