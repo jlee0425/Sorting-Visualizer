@@ -1,0 +1,16 @@
+.toolbar {
+  display: flex;
+  flex-direction: row;
+  width: 40%;
+
+  .newBtn {
+    width: 100;
+  }
+
+  .algoSelector {
+    width: 30%;
+  }
+  .sizeSlider {
+    width: 40%;
+  }
+}
