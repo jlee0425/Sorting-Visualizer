@@ -1,6 +1,6 @@
-import React from './node_modules/react'
-import { useSelector, useDispatch } from './node_modules/react-redux'
-import { uuid } from './node_modules/uuidv4'
+import React from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import { uuid } from 'uuidv4'
 import { UPDATE_ARRAY } from '../../redux/actionTypes'
 
 export const generateRandomArray = size => {

@@ -1,6 +1,6 @@
-import React from './node_modules/react'
-import Slider from './node_modules/@material-ui/core/Slider'
-import { useDispatch, useSelector } from './node_modules/react-redux'
+import React from 'react'
+import Slider from '@material-ui/core/Slider'
+import { useDispatch, useSelector } from 'react-redux'
 
 import { UPDATE_ARRAY } from '../../redux/actionTypes'
 import { generateRandomArray } from './generateArray'

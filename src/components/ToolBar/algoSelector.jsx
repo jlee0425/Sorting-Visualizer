@@ -1,7 +1,7 @@
-import React from './node_modules/react'
+import React from 'react'
 
 import { UPDATE_ALGORITHM } from '../../redux/actionTypes'
-import { useDispatch } from './node_modules/react-redux'
+import { useDispatch } from 'react-redux'
 
 const AlgoSelector = () => {
   const dispatch = useDispatch()

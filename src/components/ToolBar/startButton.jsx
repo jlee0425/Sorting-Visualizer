@@ -1,5 +1,5 @@
-import React from './node_modules/react'
-import { useDispatch } from './node_modules/react-redux'
+import React from 'react'
+import { useDispatch } from 'react-redux'
 import { START_SORTING } from '../../redux/actionTypes'
 
 const StartButton = () => {
