@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import AlgoSelector from './algoSelector'
 import NewArrayButton from './generateArray'
 import SizeSlider from './sizeSlider'

@@ -1,16 +1,14 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Slider from '@material-ui/core/Slider'
-import { useDispatch, useSelector } from 'react-redux'
+import AppContext from '../../AppContext'
 
-import { UPDATE_ARRAY } from '../../redux/actionTypes'
 import { generateRandomArray } from './generateArray'
 
 const SizeSlider = () => {
-  const arr = useSelector(state => state.arr)
-  const dispatch = useDispatch()
+  const { arr, setArray } = useContext(AppContext)
 
   const handleSlide = (event, value) => {
-    dispatch({ type: UPDATE_ARRAY, payload: generateRandomArray(value) })
+    setArray(generateRandomArray(value))
   }
 
   return (

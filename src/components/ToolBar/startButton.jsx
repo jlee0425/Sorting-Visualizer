@@ -1,11 +1,10 @@
-import React from 'react'
-import { useDispatch } from 'react-redux'
-import { START_SORTING } from '../../redux/actionTypes'
+import React, { useContext } from 'react'
+import AppContext from '../../AppContext'
 
 const StartButton = () => {
-  const dispatch = useDispatch()
+  const { algorithm, setRunning } = useContext(AppContext)
   const handleStart = () => {
-    dispatch({ type: START_SORTING })
+    if (algorithm) setRunning(true)
   }
   return (
     <>

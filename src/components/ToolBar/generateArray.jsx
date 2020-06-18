@@ -1,23 +1,26 @@
-import React from 'react'
-import { useSelector, useDispatch } from 'react-redux'
+import React, { useContext, useEffect } from 'react'
 import { uuid } from 'uuidv4'
-import { UPDATE_ARRAY } from '../../redux/actionTypes'
+
+import AppContext from '../../AppContext'
 
 export const generateRandomArray = size => {
-  const MAX_HEIGHT = 600
+  const MAX_WIDTH = 80
   return [...Array(size)].map(() => {
     return {
-      height: Math.floor(Math.random() * MAX_HEIGHT + 20),
+      width: `${Math.floor(Math.random() * MAX_WIDTH + 10)}%`,
       key: uuid()
     }
   })
 }
 const NewArrayButton = () => {
-  const arr = useSelector(state => state.arr)
-  const dispatch = useDispatch()
+  const { arr, setArray } = useContext(AppContext)
   const handleButtonClick = () => {
-    dispatch({ type: UPDATE_ARRAY, payload: generateRandomArray(arr.length) })
+    setArray(generateRandomArray(arr.length))
   }
+  useEffect(() => {
+    setArray(generateRandomArray(8))
+  }, [setArray])
+
   return (
     <React.Fragment>
       <button onClick={handleButtonClick}>New Array</button>

@@ -1,13 +1,36 @@
-import React from 'react'
+import React, { useContext } from 'react'
 
-import { UPDATE_ALGORITHM } from '../../redux/actionTypes'
-import { useDispatch } from 'react-redux'
+import AppContext from '../../AppContext'
+import {
+  bubbleSort,
+  heapSort,
+  insertionSort,
+  mergeSort,
+  quickSort
+} from '../../algorithms'
 
 const AlgoSelector = () => {
-  const dispatch = useDispatch()
-
+  const { setAlgorithm } = useContext(AppContext)
   const handleSelect = event => {
-    dispatch({ type: UPDATE_ALGORITHM, payload: event.target.value })
+    switch (event.target.value) {
+      case 'bubbleSort':
+        setAlgorithm(() => bubbleSort)
+        return
+      case 'heapSort':
+        setAlgorithm(() => heapSort)
+        return
+      case 'insertionSort':
+        setAlgorithm(() => insertionSort)
+        return
+      case 'mergeSort':
+        setAlgorithm(() => mergeSort)
+        return
+      case 'quickSort':
+        setAlgorithm(() => quickSort)
+        return
+      default:
+        return null
+    }
   }
 
   return (
