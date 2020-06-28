@@ -32,7 +32,6 @@ const AlgoSelector = () => {
         return null
     }
   }
-
   return (
     <React.Fragment>
       <select onChange={handleSelect}>

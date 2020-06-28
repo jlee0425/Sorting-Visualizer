@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext } from 'react'
 import { uuid } from 'uuidv4'
 
 import AppContext from '../../AppContext'
@@ -17,9 +17,6 @@ const NewArrayButton = () => {
   const handleButtonClick = () => {
     setArray(generateRandomArray(arr.length))
   }
-  useEffect(() => {
-    setArray(generateRandomArray(8))
-  }, [setArray])
 
   return (
     <React.Fragment>

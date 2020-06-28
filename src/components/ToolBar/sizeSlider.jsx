@@ -6,7 +6,6 @@ import { generateRandomArray } from './generateArray'
 
 const SizeSlider = () => {
   const { arr, setArray } = useContext(AppContext)
-
   const handleSlide = (event, value) => {
     setArray(generateRandomArray(value))
   }
