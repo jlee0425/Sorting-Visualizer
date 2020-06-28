@@ -1,53 +1,98 @@
-import React, { useState, useEffect } from 'react'
-import { useSelector, useDispatch, shallowEqual } from 'react-redux'
-
+import React, { useContext, useEffect, useState } from 'react'
+import { useTransition, animated } from 'react-spring'
 import Container from '@material-ui/core/Container'
-import AnimatedBubbleSort from './animatedBubbleSort'
 
-const Chart = () => {
-  const arr = useSelector(state => state.arr)
-  const algorithm = useSelector(state => state.algorithm, shallowEqual)
-  const dispatch = useDispatch()
-  const [barWidth, setBarWidth] = useState(30)
+import AppContext from '../../AppContext'
+import '../../App.scss'
+
+const swap = (arr, i, j) => [
+  ...arr.slice(0, i),
+  arr[j],
+  ...arr.slice(i + 1, j),
+  arr[i],
+  ...arr.slice(j + 1, arr.length)
+]
+const mergeSwap = (arr, from, to) => [
+  ...arr.slice(0, to),
+  arr[from],
+  ...arr.slice(to, from),
+  ...arr.slice(from + 1, arr.length)
+]
+const BAR_HEIGHT = 30
+const AnimatedChart = ({ arr, animations }) => {
+  const { algorithm, running, setRunning, setSorted } = useContext(AppContext)
+  const [animatedArr, setOrder] = useState(arr)
+  const swapWithAnimation = React.useCallback(
+    (animations, i, ms) => {
+      setTimeout(() => {
+        const [item1, item2] = animations[i]
+        if (algorithm && algorithm.name === 'mergeSort') {
+          setOrder(arr => mergeSwap(arr, item1, item2))
+        } else {
+          setOrder(arr => swap(arr, item1, item2))
+        }
+      }, ms)
+    },
+    [algorithm]
+  )
+  const startSorting = React.useCallback(() => {
+    if (running) {
+      for (let i = 0, length = animations.length; i < length; i++) {
+        swapWithAnimation(animations, i, i * 500)
+      }
+      setSorted(true)
+      setRunning(false)
+    }
+  }, [animations, running, setRunning, swapWithAnimation, setSorted])
   useEffect(() => {
-    const length = arr.length
-    if (length < 12) {
-      setBarWidth(30)
-    } else if (length < 16) {
-      setBarWidth(24)
-    } else {
-      setBarWidth(18)
+    startSorting()
+  }, [running, startSorting])
+  useEffect(() => {
+    setRunning(false)
+    setOrder(arr)
+  }, [arr, setRunning])
+  let height = 0
+  const transitions = useTransition(
+    animatedArr.map(item => ({
+      ...item,
+      y: (height += 30) - 30
+    })),
+    item => item.key,
+    {
+      from: ({ width }) => ({
+        height: BAR_HEIGHT,
+        width: width,
+        opacity: 0
+      }),
+      leave: { opacity: 0 },
+      enter: ({ y, width }) => ({ y, width, opacity: 1 }),
+      update: ({ y, width }) => ({ y, width }),
+      config: {
+        duration: 300
+      }
     }
-  }, [arr.length])
-  const getAlgorithm = () => {
-    switch (algorithm) {
-      case 'bubbleSort':
-        return
-      case 'heapSort':
-        return
-      case 'insertionSort':
-        return
-      case 'mergeSort':
-        return
-      case 'quickSort':
-        return
-      default:
-        return null
-    }
-  }
-
+  )
   return (
-    <Container style={container}>
-      {arr.length > 0 && <AnimatedBubbleSort arr={arr} barWidth={barWidth} />}
+    <Container className='chart'>
+      {transitions.map(({ item, props, key }, index) => (
+        <animated.div
+          key={key}
+          className='card'
+          style={{
+            zIndex: arr.length - index,
+            transform: props.y.interpolate(y => `translate3d(0,${y}px,0)`),
+            ...props
+          }}
+        >
+          <div className='cell'>
+            <div className='details'>
+              {item.width.slice(0, item.width.length - 1)}
+            </div>
+          </div>
+        </animated.div>
+      ))}
     </Container>
   )
 }
-const container = {
-  width: '100%',
-  height: '700px',
-  background: '#E5F2E5',
-  display: 'flex',
-  justifyContent: 'space-evenly',
-  alignItems: 'flex-end'
-}
-export default Chart
+
+export default AnimatedChart
