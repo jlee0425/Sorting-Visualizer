@@ -16,7 +16,6 @@ export const insertionSort = arr => {
       }
     }
   }
-  console.log('insertion sort animations', arr, animations)
   return animations
 }
 

@@ -1,6 +1,5 @@
 export const bubbleSort = arr => {
   if (arr.length < 2) return arr
-  console.log('bubble arr', arr)
   let animations = []
   let temp = [...arr]
   for (let i = 0; i < temp.length; i++) {
