@@ -1,5 +1,7 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
+import { Button } from 'semantic-ui-react'
 
+import { resizeHandler } from './helper'
 import AppContext from '../../AppContext'
 import {
   bubbleSort,
@@ -11,39 +13,47 @@ import {
 
 const AlgoSelector = () => {
   const { setAlgorithm } = useContext(AppContext)
+  const [buttonSize, setButtonSize] = useState('large')
   const handleSelect = event => {
-    switch (event.target.value) {
-      case 'bubbleSort':
+    switch (event.target.innerHTML) {
+      case 'Bubble Sort':
         setAlgorithm(() => bubbleSort)
         return
-      case 'heapSort':
+      case 'Heap Sort':
         setAlgorithm(() => heapSort)
         return
-      case 'insertionSort':
+      case 'Insertion Sort':
         setAlgorithm(() => insertionSort)
         return
-      case 'mergeSort':
+      case 'Merge Sort':
         setAlgorithm(() => mergeSort)
         return
-      case 'quickSort':
+      case 'Quick Sort':
         setAlgorithm(() => quickSort)
         return
       default:
         return null
     }
   }
+  useEffect(() => {
+    const handleResize = () => {
+      setButtonSize(resizeHandler())
+    }
+    window.addEventListener('resize', handleResize)
+  })
   return (
     <React.Fragment>
-      <select onChange={handleSelect}>
-        <option disabled selected hidden>
-          Algorithm
-        </option>
-        <option value='mergeSort'>Merge Sort</option>
-        <option value='quickSort'>Quick Sort</option>
-        <option value='bubbleSort'>Bubble Sort</option>
-        <option value='insertionSort'>Insertion Sort</option>
-        <option value='heapSort'>Heap Sort</option>
-      </select>
+      <Button.Group compact widths={1} size={buttonSize} onClick={handleSelect}>
+        <Button>Merge Sort</Button>
+        <Button.Or />
+        <Button>Quick Sort</Button>
+        <Button.Or />
+        <Button>Heap Sort</Button>
+        <Button.Or />
+        <Button>Insertion Sort</Button>
+        <Button.Or />
+        <Button>Bububle Sort</Button>
+      </Button.Group>
     </React.Fragment>
   )
 }
