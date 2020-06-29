@@ -1,19 +1,34 @@
 import React from 'react'
 import AlgoSelector from './algoSelector'
 import NewArrayButton from './generateArray'
-import SizeSlider from './sizeSlider'
+import CustomSlider from './CustomSlider'
 import StartButton from './startButton'
-import './index.scss'
 
 const ToolBar = () => {
   return (
-    <div className='ToolBar'>
-      <NewArrayButton className='newBtn' />
-      <AlgoSelector className='algoSelector' />
-      <SizeSlider className='sizeSlider' />
-      <StartButton className='startBtn' />
+    <div style={styles.container}>
+      <div style={styles.ToolBar1}>
+        <NewArrayButton />
+        <CustomSlider />
+      </div>
+      <div style={styles.ToolBar2}>
+        <AlgoSelector />
+      </div>
+      <StartButton />
     </div>
   )
 }
 
+const styles = {
+  ToolBar1: {
+    display: 'flex',
+    flexDirection: 'row'
+  },
+  ToolBar2: {
+    display: 'flex',
+    justifyContent: 'space-around',
+    alignItems: 'flex-start',
+    marginTop: '10px'
+  }
+}
 export default ToolBar
