@@ -1,9 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { useTransition, animated } from 'react-spring'
-import Container from '@material-ui/core/Container'
 
 import AppContext from '../../AppContext'
-import '../../App.scss'
+import './chart.css'
 
 const swap = (arr, i, j) => [
   ...arr.slice(0, i),
@@ -20,7 +19,14 @@ const mergeSwap = (arr, from, to) => [
 ]
 const BAR_HEIGHT = 30
 const AnimatedChart = ({ arr, animations }) => {
-  const { algorithm, running, setRunning, setSorted } = useContext(AppContext)
+  const {
+    algorithm,
+    running,
+    sorted,
+    speed,
+    setRunning,
+    setSorted
+  } = useContext(AppContext)
   const [animatedArr, setOrder] = useState(arr)
   const swapWithAnimation = React.useCallback(
     (animations, i, ms) => {
@@ -38,15 +44,15 @@ const AnimatedChart = ({ arr, animations }) => {
   const startSorting = React.useCallback(() => {
     if (running) {
       for (let i = 0, length = animations.length; i < length; i++) {
-        swapWithAnimation(animations, i, i * 500)
+        swapWithAnimation(animations, i, i * speed)
       }
       setSorted(true)
       setRunning(false)
     }
-  }, [animations, running, setRunning, swapWithAnimation, setSorted])
+  }, [animations, running, setRunning, swapWithAnimation, speed, setSorted])
   useEffect(() => {
-    startSorting()
-  }, [running, startSorting])
+    if (!sorted) startSorting()
+  }, [sorted, running, startSorting])
   useEffect(() => {
     setRunning(false)
     setOrder(arr)
@@ -73,11 +79,11 @@ const AnimatedChart = ({ arr, animations }) => {
     }
   )
   return (
-    <Container className='chart'>
+    <div className='chart'>
       {transitions.map(({ item, props, key }, index) => (
         <animated.div
           key={key}
-          className='card'
+          className='cellContainer'
           style={{
             zIndex: arr.length - index,
             transform: props.y.interpolate(y => `translate3d(0,${y}px,0)`),
@@ -91,8 +97,9 @@ const AnimatedChart = ({ arr, animations }) => {
           </div>
         </animated.div>
       ))}
-    </Container>
+    </div>
   )
 }
+
 
 export default AnimatedChart
