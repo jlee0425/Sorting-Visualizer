@@ -1,0 +1,21 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  font-family: monospace;
+}
+
+#root {
+  overflow: auto;
+  padding: 25px;
+  display: flex;
+  justify-content: center;
+  background: #ffffff;
+}
