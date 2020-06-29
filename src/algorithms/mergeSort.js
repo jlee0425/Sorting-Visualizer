@@ -1,6 +1,7 @@
 export const mergeSort = arr => {
   let temp = [...arr],
     animations = []
+
   const mergeSwap = (arr, from, to) => {
     animations.push([from, to])
     let fromValue = arr[from],
@@ -11,6 +12,7 @@ export const mergeSort = arr => {
     }
     arr[to] = fromValue
   }
+
   const merge = (arr, start, mid, end) => {
     let start2 = mid + 1
     if (arr[mid].width <= arr[start2].width) {
