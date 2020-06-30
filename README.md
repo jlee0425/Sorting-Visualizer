@@ -1,6 +1,6 @@
 # Sorting Visualizer
 
-![demo](./public/demo.png)
+![demo](./public/demo.PNG)
 
 ### This single page website shows a simple visualization of a handful of common sortinng algorithms.
 
