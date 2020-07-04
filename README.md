@@ -4,7 +4,7 @@
 
 ### This single page website shows a simple visualization of a handful of common sortinng algorithms.
 
-Please see the live version of this app at [] -----.
+Please see the live version of this app [HERE](https://quirky-swirles-9080c2.netlify.app/).
 
 ---
 
