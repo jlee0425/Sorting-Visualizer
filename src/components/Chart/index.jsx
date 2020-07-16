@@ -11,12 +11,21 @@ const swap = (arr, i, j) => [
   arr[i],
   ...arr.slice(j + 1, arr.length)
 ]
-const mergeSwap = (arr, from, to) => [
-  ...arr.slice(0, to),
-  arr[from],
-  ...arr.slice(to, from),
-  ...arr.slice(from + 1, arr.length)
-]
+const mergeSwap = (arr, from, to) => {
+  return from > to
+    ? [
+        ...arr.slice(0, to),
+        arr[from],
+        ...arr.slice(to, from),
+        ...arr.slice(from + 1, arr.length)
+      ]
+    : [
+        ...arr.slice(0, from),
+        ...arr.slice(from + 1, to),
+        arr[from],
+        ...arr.slice(to, arr.length)
+      ]
+}
 const BAR_HEIGHT = 30
 const AnimatedChart = ({ arr, animations }) => {
   const {
@@ -47,7 +56,7 @@ const AnimatedChart = ({ arr, animations }) => {
         swapWithAnimation(animations, i, i * speed)
       }
       setSorted(true)
-      setRunning(false)
+      setTimeout(() => setRunning(false), animations.length * speed)
     }
   }, [animations, running, setRunning, swapWithAnimation, speed, setSorted])
   useEffect(() => {
@@ -100,6 +109,5 @@ const AnimatedChart = ({ arr, animations }) => {
     </div>
   )
 }
-
 
 export default AnimatedChart
