@@ -3,7 +3,7 @@ import { Button } from 'semantic-ui-react'
 import AppContext from '../../AppContext'
 
 const StartButton = () => {
-  const { algorithm, setRunning } = useContext(AppContext)
+  const { algorithm, running, setRunning } = useContext(AppContext)
   const handleStart = () => {
     if (algorithm) setRunning(true)
   }
@@ -14,7 +14,7 @@ const StartButton = () => {
         onClick={handleStart}
         style={{ width: '100%', marginTop: '10px' }}
       >
-        START SORTING
+        {running ? 'Sorting In Progress...' : 'START SORTING'}
       </Button>
     </>
   )

@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { Button } from 'semantic-ui-react'
-
 import { resizeHandler } from './helper'
 import AppContext from '../../AppContext'
 import {
