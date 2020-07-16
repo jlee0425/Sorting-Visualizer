@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { Button } from 'semantic-ui-react'
+import { Button, Popup } from 'semantic-ui-react'
 import { resizeHandler } from './helper'
 import AppContext from '../../AppContext'
 import {
@@ -43,7 +43,14 @@ const AlgoSelector = () => {
   return (
     <React.Fragment>
       <Button.Group compact widths={1} size={buttonSize} onClick={handleSelect}>
-        <Button>Merge Sort</Button>
+        <Popup
+          content='Currently disabled due to an animation bug'
+          trigger={
+            <span>
+              <Button disabled>Merge Sort</Button>
+            </span>
+          }
+        />
         <Button.Or />
         <Button>Quick Sort</Button>
         <Button.Or />
