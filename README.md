@@ -16,4 +16,4 @@ This application is built using React, React-Spring and Semantic-UI
 
 ### Known issue
 
--[ ] `mergeSwap` is not functioning properly on netlify, but it is working as intended on localhost.
+- [ ] `mergeSwap` is not functioning properly on netlify, but it is working as intended on localhost.
