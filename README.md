@@ -13,3 +13,7 @@ As I was studying React, I thought it would be a great opportunity to practice R
 There were many obstacles while building this, mainly learning hooks and extracting animations while sorting.
 
 This application is built using React, React-Spring and Semantic-UI
+
+### Known issue
+
+-[ ] `mergeSwap` is not functioning properly on netlify, but it is working as intended on localhost.
