@@ -54,7 +54,7 @@ const AlgoSelector = () => {
         <Popup
           trigger={
             <span>
-              <Button>Merge Sort</Button>
+              <Button disabled>Merge Sort</Button>
             </span>
           }
         >
