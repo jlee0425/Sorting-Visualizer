@@ -43,13 +43,6 @@ const AlgoSelector = () => {
   return (
     <React.Fragment>
       <Button.Group compact widths={1} size={buttonSize} onClick={handleSelect}>
-        {/* <Popup
-          content='Currently disabled due to an animation bug'
-          trigger={
-            <span>
-            </span>
-          }
-          /> */}
         <Button>Merge Sort</Button>
         <Button.Or />
         <Button>Quick Sort</Button>
