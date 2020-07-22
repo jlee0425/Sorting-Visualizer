@@ -21,9 +21,9 @@ const mergeSwap = (arr, from, to) => {
       ]
     : [
         ...arr.slice(0, from),
-        ...arr.slice(from + 1, to),
+        ...arr.slice(from + 1, to + 1),
         arr[from],
-        ...arr.slice(to, arr.length)
+        ...arr.slice(to + 1, arr.length)
       ]
 }
 const BAR_HEIGHT = 30
