@@ -12,17 +12,18 @@ const swap = (arr, i, j) => [
   ...arr.slice(j + 1, arr.length)
 ]
 const mergeSwap = (arr, from, to) => {
+  const itemToMove = arr[from]
   return from > to
     ? [
         ...arr.slice(0, to),
-        arr[from],
+        itemToMove,
         ...arr.slice(to, from),
         ...arr.slice(from + 1, arr.length)
       ]
     : [
         ...arr.slice(0, from),
         ...arr.slice(from + 1, to + 1),
-        arr[from],
+        itemToMove,
         ...arr.slice(to + 1, arr.length)
       ]
 }

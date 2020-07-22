@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { Button } from 'semantic-ui-react'
+import { Button, Popup } from 'semantic-ui-react'
 import { resizeHandler } from './helper'
 import AppContext from '../../AppContext'
 import {
@@ -43,15 +43,27 @@ const AlgoSelector = () => {
   return (
     <React.Fragment>
       <Button.Group compact widths={1} size={buttonSize} onClick={handleSelect}>
-        <Button>Merge Sort</Button>
-        <Button.Or />
-        <Button>Quick Sort</Button>
-        <Button.Or />
         <Button>Heap Sort</Button>
         <Button.Or />
         <Button>Insertion Sort</Button>
         <Button.Or />
         <Button>Bububle Sort</Button>
+        <Button.Or />
+        <Button>Quick Sort</Button>
+        <Button.Or />
+        <Popup
+          trigger={
+            <span>
+              <Button>Merge Sort</Button>
+            </span>
+          }
+        >
+          <Popup.Header>Currently Disabled</Popup.Header>
+          <Popup.Content>
+            The function works as intended in development, but it breaks the app
+            when deployed on netlify. Currently working on a fix.
+          </Popup.Content>
+        </Popup>
       </Button.Group>
     </React.Fragment>
   )
