@@ -47,7 +47,7 @@ const AlgoSelector = () => {
         <Button.Or />
         <Button>Insertion Sort</Button>
         <Button.Or />
-        <Button>Bububle Sort</Button>
+        <Button>Bubble Sort</Button>
         <Button.Or />
         <Button>Quick Sort</Button>
         <Button.Or />
