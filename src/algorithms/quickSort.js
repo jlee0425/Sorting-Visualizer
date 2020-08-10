@@ -34,5 +34,3 @@ export const quickSort = arr => {
   quickSortHelper(temp)
   return animations
 }
-
-// module.exports = quickSort

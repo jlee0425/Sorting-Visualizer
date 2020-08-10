@@ -35,5 +35,3 @@ export const heapSort = arr => {
   }
   return animations
 }
-
-// module.exports = heapSort

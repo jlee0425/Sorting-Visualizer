@@ -15,5 +15,3 @@ export const insertionSort = arr => {
   }
   return animations
 }
-
-// module.exports = insertionSort
