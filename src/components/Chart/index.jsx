@@ -52,7 +52,7 @@ const AnimatedChart = ({ arr, animations }) => {
     },
     [algorithm]
   )
-
+  useEffect(() => console.log(animatedArr), [animatedArr])
   const startSorting = React.useCallback(() => {
     if (running) {
       for (let i = 0, length = animations.length; i < length; i++) {
