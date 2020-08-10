@@ -37,6 +37,7 @@ const AnimatedChart = ({ arr, animations }) => {
     setRunning,
     setSorted
   } = useContext(AppContext)
+
   const [animatedArr, setOrder] = useState(arr)
   const swapWithAnimation = React.useCallback(
     (animations, i, ms) => {
@@ -51,6 +52,7 @@ const AnimatedChart = ({ arr, animations }) => {
     },
     [algorithm]
   )
+
   const startSorting = React.useCallback(() => {
     if (running) {
       for (let i = 0, length = animations.length; i < length; i++) {
@@ -60,18 +62,21 @@ const AnimatedChart = ({ arr, animations }) => {
       setTimeout(() => setRunning(false), animations.length * speed)
     }
   }, [animations, running, setRunning, swapWithAnimation, speed, setSorted])
+
   useEffect(() => {
     if (!sorted) startSorting()
   }, [sorted, running, startSorting])
+
   useEffect(() => {
     setRunning(false)
     setOrder(arr)
   }, [arr, setRunning])
+
   let height = 0
   const transitions = useTransition(
     animatedArr.map(item => ({
       ...item,
-      y: (height += 30) - 30
+      y: (height += BAR_HEIGHT) - BAR_HEIGHT
     })),
     item => item.key,
     {
@@ -88,6 +93,7 @@ const AnimatedChart = ({ arr, animations }) => {
       }
     }
   )
+
   return (
     <div className='chart'>
       {transitions.map(({ item, props, key }, index) => (
