@@ -28,8 +28,10 @@ const mergeSwap = (arr, from, to) => {
       ]
 }
 const BAR_HEIGHT = 30
-const AnimatedChart = ({ arr, animations }) => {
+const AnimatedChart = () => {
   const {
+    arr,
+    animations,
     algorithm,
     running,
     sorted,
@@ -53,6 +55,7 @@ const AnimatedChart = ({ arr, animations }) => {
     [algorithm]
   )
   useEffect(() => console.log(animatedArr), [animatedArr])
+
   const startSorting = React.useCallback(() => {
     if (running) {
       for (let i = 0, length = animations.length; i < length; i++) {
