@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from 'react'
+import React, { useState, useEffect } from 'react'
 
 import Title from './components/Title'
 import ToolBar from './components/ToolBar'
@@ -21,38 +21,25 @@ const App = () => {
     const fetchAnimations = () => algorithm(arr)
     if (algorithm) setAnimations(fetchAnimations())
   }, [arr, algorithm, setRunning])
-  const value = useMemo(
-    () => ({
-      arr,
-      setArray,
-      algorithm,
-      setAlgorithm,
-      speed,
-      setSpeed,
-      sorted,
-      setSorted,
-      running,
-      setRunning
-    }),
-    [
-      arr,
-      setArray,
-      algorithm,
-      setAlgorithm,
-      speed,
-      setSpeed,
-      sorted,
-      setSorted,
-      running,
-      setRunning
-    ]
-  )
+  const value = {
+    arr,
+    animations,
+    setArray,
+    algorithm,
+    setAlgorithm,
+    speed,
+    setSpeed,
+    sorted,
+    setSorted,
+    running,
+    setRunning
+  }
   return (
     <div style={styles.container}>
       <Title />
       <AppContext.Provider value={value}>
         <ToolBar />
-        <AnimatedChart arr={arr} animations={animations} />
+        <AnimatedChart />
       </AppContext.Provider>
     </div>
   )
