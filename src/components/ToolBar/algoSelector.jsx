@@ -58,10 +58,11 @@ const AlgoSelector = () => {
             </span>
           }
         >
-          <Popup.Header>Currently Disabled</Popup.Header>
+          <Popup.Header>Merge Sort may break the app</Popup.Header>
           <Popup.Content>
-            The function may break the app when deployed on netlify. Currently
-            working on a fix.
+            Currently working on a fix. It works as intended in production, but
+            it produces a bug that duplicates multiple of same elements when
+            deployed on Netlify.
           </Popup.Content>
         </Popup>
       </Button.Group>
