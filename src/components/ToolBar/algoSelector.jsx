@@ -60,8 +60,8 @@ const AlgoSelector = () => {
         >
           <Popup.Header>Currently Disabled</Popup.Header>
           <Popup.Content>
-            The function works as intended in development, but it breaks the app
-            when deployed on netlify. Currently working on a fix.
+            The function may break the app when deployed on netlify. Currently
+            working on a fix.
           </Popup.Content>
         </Popup>
       </Button.Group>
