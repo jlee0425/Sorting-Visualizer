@@ -1,17 +1,8 @@
+import { mergeSwap } from './swap'
+
 export const mergeSort = arr => {
   let temp = [...arr],
     animations = []
-
-  const mergeSwap = (arr, from, to) => {
-    animations.push([from, to])
-    let fromValue = arr[from],
-      fromIndex = from
-    while (fromIndex !== to) {
-      arr[fromIndex] = arr[fromIndex - 1]
-      fromIndex--
-    }
-    arr[to] = fromValue
-  }
 
   const merge = (arr, start, mid, end) => {
     let start2 = mid + 1
@@ -22,7 +13,7 @@ export const mergeSort = arr => {
       if (arr[start].width <= arr[start2].width) {
         start++
       } else {
-        mergeSwap(arr, start2, start)
+        mergeSwap(arr, start2, start, animations)
         start++
         mid++
         start2++
@@ -42,5 +33,6 @@ export const mergeSort = arr => {
   }
 
   mergeSortHelper(temp)
+
   return animations
 }

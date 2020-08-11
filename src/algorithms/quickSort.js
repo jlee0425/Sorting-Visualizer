@@ -1,36 +1,38 @@
+import { swap } from './swap'
+
 export const quickSort = arr => {
   let temp = [...arr],
     animations = []
-  const swap = (arr, a, b) => {
-    ;[arr[a], arr[b]] = [arr[b], arr[a]]
-  }
-  const partition = (arr, start) => {
-    let pivot = arr[start],
+
+  const partition = (array, start) => {
+    let pivot = array[start],
       pIndex = start
-    for (let i = start, length = arr.length; i < length; i++) {
-      if (arr[i].width < pivot.width) {
+
+    for (let i = start, length = array.length; i < length; i++) {
+      if (array[i].width < pivot.width) {
         pIndex++
-        if (arr[pIndex].key !== arr[i].key) {
-          animations.push([pIndex, i])
-          swap(arr, pIndex, i)
+        if (array[pIndex].key !== array[i].key) {
+          swap(array, pIndex, i, animations)
         }
       }
     }
     if (start !== pIndex) {
-      animations.push([start, pIndex])
-      swap(arr, start, pIndex)
+      swap(array, start, pIndex, animations)
     }
     return pIndex
   }
-  const quickSortHelper = (arr, start = 0, end = arr.length - 1) => {
-    let pivot = partition(arr, start)
 
-    if (start >= end) return arr
-    quickSortHelper(arr, start, pivot)
-    quickSortHelper(arr, pivot + 1, end)
+  const quickSortHelper = (array, start, end) => {
+    let pivot = partition(array, start)
 
-    return arr
+    if (start >= end) return array
+    quickSortHelper(array, start, pivot)
+    quickSortHelper(array, pivot + 1, end)
+
+    return array
   }
-  quickSortHelper(temp)
+
+  quickSortHelper(temp, 0, temp.length)
+
   return animations
 }
