@@ -54,7 +54,6 @@ const AnimatedChart = () => {
     },
     [algorithm]
   )
-  useEffect(() => console.log(animatedArr), [animatedArr])
 
   const startSorting = React.useCallback(() => {
     if (running) {
