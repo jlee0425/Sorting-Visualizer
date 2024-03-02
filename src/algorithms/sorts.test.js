@@ -1,5 +1,5 @@
 const swap = (arr, a, b) => {
-  ;[arr[a], arr[b]] = [arr[b], arr[a]]
+  [arr[a], arr[b]] = [arr[b], arr[a]];
 }
 const bubbleSort = arr => {
   if (arr.length < 2) return arr
