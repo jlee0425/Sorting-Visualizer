@@ -1,3 +1,4 @@
+
 export const swap = (arr, a, b, animations) => {
   if (arr[a].key !== arr[b].key && arr[a].width !== arr[b].width) {
     animations.push([a, b])
