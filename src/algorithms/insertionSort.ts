@@ -1,13 +1,13 @@
-import {SwapArray, TargetArray} from '../types';
-import {swap} from './swap';
+import { SwapArray, TargetArray } from '../types';
+import { swap } from './swap';
 
-export const insertionSort = (arr: TargetArray) => {
+const insertionSort = (arr: TargetArray) => {
   if (arr.length < 2) return arr;
 
   const temp = [...arr];
   const animations: SwapArray = [];
 
-  for (let i = 1, length = temp.length; i < length; i++) {
+  for (let i = 1, { length } = temp; i < length; i++) {
     if (temp[i].width < temp[i - 1].width) {
       for (let j = i; j >= 0; j--) {
         if (temp[j - 1]?.width > temp[j].width) {
@@ -19,3 +19,5 @@ export const insertionSort = (arr: TargetArray) => {
 
   return animations;
 };
+
+export default insertionSort;

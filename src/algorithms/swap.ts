@@ -1,10 +1,10 @@
-import {SwapArray, TargetArray} from "../types";
+import { SwapArray, TargetArray } from '../types';
 
 export const swap = (
   arr: TargetArray,
   a: number,
   b: number,
-  animations: SwapArray
+  animations: SwapArray,
 ) => {
   if (arr[a].key !== arr[b].key && arr[a].width !== arr[b].width) {
     animations.push([a, b]);
@@ -16,7 +16,7 @@ export const mergeSwap = (
   arr: TargetArray,
   from: number,
   to: number,
-  animations: SwapArray
+  animations: SwapArray,
 ) => {
   if (arr[from].key !== arr[to].key
     && arr[from].width !== arr[to].width) {

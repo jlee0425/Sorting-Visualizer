@@ -1,7 +1,7 @@
-import {SwapArray, TargetArray} from '../types';
-import {mergeSwap} from './swap';
+import { SwapArray, TargetArray } from '../types';
+import { mergeSwap } from './swap';
 
-export const mergeSort = (arr: TargetArray) => {
+const mergeSort = (arr: TargetArray) => {
   const temp = [...arr];
   const animations: SwapArray = [];
 
@@ -9,7 +9,7 @@ export const mergeSort = (arr: TargetArray) => {
     arr: TargetArray,
     start: number,
     mid: number,
-    end: number
+    end: number,
   ) => {
     let start2 = mid + 1;
     if (arr[mid].width <= arr[start2].width) {
@@ -30,7 +30,7 @@ export const mergeSort = (arr: TargetArray) => {
   const mergeSortHelper = (
     arr: TargetArray,
     l = 0,
-    r = arr.length - 1
+    r = arr.length - 1,
   ) => {
     if (l < r) {
       const m = Math.floor((l + r) / 2);
@@ -46,3 +46,5 @@ export const mergeSort = (arr: TargetArray) => {
 
   return animations;
 };
+
+export default mergeSort;

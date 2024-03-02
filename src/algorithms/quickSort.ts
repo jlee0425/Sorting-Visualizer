@@ -1,7 +1,7 @@
-import {SwapArray, TargetArray} from '../types';
-import {swap} from './swap';
+import { SwapArray, TargetArray } from '../types';
+import { swap } from './swap';
 
-export const quickSort = (arr: TargetArray) => {
+const quickSort = (arr: TargetArray) => {
   const temp = [...arr];
   const animations: SwapArray = [];
 
@@ -9,7 +9,7 @@ export const quickSort = (arr: TargetArray) => {
     const pivot = array[start];
     let pIndex = start;
 
-    for (let i = start, length = array.length; i < length; i++) {
+    for (let i = start, { length } = array; i < length; i++) {
       if (array[i].width < pivot.width) {
         pIndex++;
         if (array[pIndex].key !== array[i].key) {
@@ -37,3 +37,5 @@ export const quickSort = (arr: TargetArray) => {
 
   return animations;
 };
+
+export default quickSort;

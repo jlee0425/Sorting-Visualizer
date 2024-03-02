@@ -1,7 +1,7 @@
-import {SwapArray, TargetArray} from '../types';
-import {swap} from './swap';
+import { SwapArray, TargetArray } from '../types';
+import { swap } from './swap';
 
-export const bubbleSort = (arr: TargetArray) => {
+const bubbleSort = (arr: TargetArray) => {
   if (arr.length < 2) return arr;
 
   const animations: SwapArray = [];
@@ -18,3 +18,5 @@ export const bubbleSort = (arr: TargetArray) => {
 
   return animations;
 };
+
+export default bubbleSort;

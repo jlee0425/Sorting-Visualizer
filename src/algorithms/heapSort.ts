@@ -1,12 +1,11 @@
-import {SwapArray, TargetArray} from '../types';
-import {swap} from './swap';
-
+import { SwapArray, TargetArray } from '../types';
+import { swap } from './swap';
 
 const heapify = (
   arr: TargetArray,
   i: number,
   length: number,
-  animations: SwapArray
+  animations: SwapArray,
 ) => {
   const left = 2 * i + 1;
   const right = 2 * i + 2;
@@ -26,10 +25,9 @@ const heapify = (
   }
 };
 
-export const heapSort = (arr: TargetArray) => {
+const heapSort = (arr: TargetArray) => {
   const temp = [...arr];
   const animations: SwapArray = [];
-
 
   for (let i = Math.floor(temp.length / 2); i >= 0; i--) {
     heapify(temp, i, temp.length, animations);
@@ -41,3 +39,5 @@ export const heapSort = (arr: TargetArray) => {
   }
   return animations;
 };
+
+export default heapSort;
