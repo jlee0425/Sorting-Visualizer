@@ -23,6 +23,7 @@ module.exports = {
     '@typescript-eslint/no-shadow': 'off',
 
     'import/extensions': 'off',
+    'import/no-absolute-path': 'off',
     'linebreak-style': 'off',
     'no-plusplus': 'off',
     'no-param-reassign': 'warn'
